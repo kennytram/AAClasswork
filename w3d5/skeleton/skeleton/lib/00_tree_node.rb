@@ -48,11 +48,7 @@ class PolyTreeNode
         end
         nil
     end
-'''
-  1
-  23 
- 4567
-'''
+
     def bfs(target_value)
        #return self if self.value == target_value
         queue = [self]
