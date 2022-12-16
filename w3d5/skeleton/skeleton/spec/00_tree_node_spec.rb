@@ -144,5 +144,12 @@ describe 'Searchable' do
       end
       expect(nodes.first.bfs('f')).to equal(nodes[5])
     end
+
+    it "should take 2" do
+      expect(nodes[2]).to_not receive(:bfs)
+      [0, 1, 3, 4].each do |index|
+        expect(nodes[index]).to receive(:bfs).and_call_original.ordered
+      end
+    end
   end
 end
