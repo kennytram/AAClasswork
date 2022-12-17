@@ -53,13 +53,11 @@ class PolyTreeNode
        #return self if self.value == target_value
         queue = [self]
         until queue.empty?
-            debugger
             node = queue.shift
             #p node.value
             return node if node.value == target_value
             
             node.children.each {|child| queue.push(child) unless child.nil?}
-            debugger
         end
         nil
     end
