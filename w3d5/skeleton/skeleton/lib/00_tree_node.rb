@@ -61,6 +61,17 @@ class PolyTreeNode
         end
         nil
     end
+
+    def print_node
+        queue = [self]
+        list = []
+        until queue.empty?
+            node = queue.shift
+            list << node.value
+            node.children.each {|node| queue.push(node) unless node.nil?}
+        end
+        list.each {|v| print "#{v}, "}
+    end
 end
 # root_node = PolyTreeNode.new(1)
 # node1 = PolyTreeNode.new(2)

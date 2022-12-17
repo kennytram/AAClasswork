@@ -40,10 +40,6 @@ class KnightPathFinder
         @root_node = nil
     end
 
-    # def root_node
-    #     @root_node
-    # end
-
     def pos
         @pos
     end
@@ -72,6 +68,11 @@ class KnightPathFinder
             new_move_positions(node_position)
         end
         #self
+        p @considered_positions.length
+    end
+
+    def find_path(end_pos)
+
     end
 
     attr_accessor :root_node
