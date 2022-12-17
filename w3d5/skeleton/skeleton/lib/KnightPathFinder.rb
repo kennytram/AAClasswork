@@ -46,7 +46,14 @@ class KnightPathFinder
 
     def new_move_positions(pos)
         new_moves = KnightPathFinder.valid_moves(pos)
+        new_positions = []
+        new_moves.each do |new_pos|
+            unless @considered_positions.include?(new_pos)
+                new_positions << new_pos
+            end
+        end
         @considered_positions += new_moves
+        new_positions
     end
 
     #expected return: an array of nodes
@@ -57,13 +64,11 @@ class KnightPathFinder
         until queue.empty?
             node = queue.shift
             node_position = node.value
-            new_moves = KnightPathFinder.valid_moves(node_position)
+            new_moves = new_move_positions(node_position)
             new_moves.each do |new_move|
-                unless @considered_positions.include?(new_move)
-                    new_move_node = PolyTreeNode.new(new_move)
-                    node.add_child(new_move_node)
-                    queue.push(new_move_node)
-                end
+                new_move_node = PolyTreeNode.new(new_move)
+                node.add_child(new_move_node)
+                queue.push(new_move_node)
             end
             new_move_positions(node_position)
         end
